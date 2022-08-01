@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 #include <cmath>
+#include <cstdio>
 #include <iostream>
 #include "csv.h"
 
@@ -507,16 +508,8 @@ find_data find(int K)
 int main()
 {
 
-    std:: string file_name = "./sample_final.csv", line;
-    std::ifstream file; 
-    file.open(file_name);
+    bool leitura = true;
     tree_file = fopen("./primarytree.bin", "w+"); //coloque w++
-
-    if(!file.is_open()) 
-    {
-        std::cout << "File " << file_name << " not found." << std::endl;
-        exit(-1);
-    }
 
     head empty_head;
     empty_head.level_count = 0;
@@ -526,18 +519,23 @@ int main()
 
     io::CSVReader<7,io::trim_chars<> , io::double_quote_escape<';','\"'>> sample("sample_final.csv");
     sample.set_header("ID","Titulo","Ano","Autores","Citacoes","Atualizacao","Snippet");
-
+    
     tipo_artigo_leitura * ta_aux = (tipo_artigo_leitura*) malloc(sizeof(tipo_artigo_leitura));
-    while (sample.read_row(ta_aux->ID, ta_aux->Titulo,ta_aux->Ano, ta_aux->Autores, ta_aux->Citacoes, ta_aux->Atualizacao, ta_aux->Snippet)) 
-    {
-        int id = std::stoi(ta_aux->ID);
-        insert(id, hashify(id));
-        std::cout << "Inserindo id: " << ta_aux->ID << std::endl;
+    while (leitura) 
+    { 
+        try {
+          if (leitura = sample.read_row(ta_aux->ID, ta_aux->Titulo,ta_aux->Ano, ta_aux->Autores, ta_aux->Citacoes, ta_aux->Atualizacao, ta_aux->Snippet)) {
+
+              int id = std::stoi(ta_aux->ID);
+              insert(id, hashify(id));
+              std::cout << "Inserindo id: " << ta_aux->ID << std::endl;
+          }
+        } catch (io::error::too_few_columns) {}
     }
     free(ta_aux);
 
-    tree_file = fopen("./primarytree.bin", "r"); //coloque w++
-    find(2);
+    // tree_file = fopen("./primarytree.bin", "r"); //coloque w++
+    // find(2);
 
     fclose(tree_file);
 

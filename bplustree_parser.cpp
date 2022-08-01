@@ -12,6 +12,16 @@ FILE *tree_file;
 std::vector<int> parents;
 std::vector<int> controle_parental;
 
+struct tipo_artigo_leitura {
+    std::string ID;
+    std::string Titulo;
+    std::string Ano;
+    std::string Autores;
+    std::string Citacoes;
+    std::string Atualizacao;
+    std::string Snippet;
+};
+
 struct tipo_artigo {
     int ID = 0;
     char Titulo[300] = {};
@@ -414,7 +424,7 @@ void print_result(find_data data)
 
 find_data find(int K)
 {
-    FILE * hash_file = fopen("./db-tp2/hash.bin", "r");
+    FILE * hash_file = fopen("../thayna/db-tp2/hash.bin", "r");
     controle_parental.clear();
     head head_data;
     node node_data;
@@ -471,8 +481,8 @@ find_data find(int K)
             fseek(hash_file, k_offset*BLOCK_LENGTH, SEEK_SET); // Aponta para o bucket de acordo com a chave
             fread(&block, BLOCK_LENGTH, 1, hash_file); // Carrega o bloco para memória
             for (int j = 0; j < block.articles_quantity; j++) {
-              std::cout << "block.id: " << block.articles[j].id << std::endl;
-              if (block.articles[j].id == K)
+              std::cout << "block.id: " << block.articles[j].ID << std::endl;
+              if (block.articles[j].ID == K)
               {
                 find_data result = {block.articles[j], head_data.node_count, head_data.level_count};
                 print_result(result);
@@ -497,7 +507,7 @@ find_data find(int K)
 int main()
 {
 
-    std:: string file_name = "./artigo.csv", line;
+    std:: string file_name = "./sample_final.csv", line;
     std::ifstream file; 
     file.open(file_name);
     tree_file = fopen("./primarytree.bin", "w+"); //coloque w++
@@ -515,19 +525,20 @@ int main()
     fwrite(&empty_head, sizeof(head), 1, tree_file);
 
     io::CSVReader<7,io::trim_chars<> , io::double_quote_escape<';','\"'>> sample("sample_final.csv");
-    sample.read_header(io::ignore_no_column, "ID","Titulo","Ano","Autores","Citacoes","Atualizacao","Snippet");
+    sample.set_header("ID","Titulo","Ano","Autores","Citacoes","Atualizacao","Snippet");
 
-    tipo_artigo * ta_aux = (tipo_artigo*) malloc(sizeof(tipo_artigo));
+    tipo_artigo_leitura * ta_aux = (tipo_artigo_leitura*) malloc(sizeof(tipo_artigo_leitura));
     while (sample.read_row(ta_aux->ID, ta_aux->Titulo,ta_aux->Ano, ta_aux->Autores, ta_aux->Citacoes, ta_aux->Atualizacao, ta_aux->Snippet)) 
     {
-        insert(ta_aux->ID, hashify(ta_aux->ID));
+        int id = std::stoi(ta_aux->ID);
+        insert(id, hashify(id));
         std::cout << "Inserindo id: " << ta_aux->ID << std::endl;
     }
-
-    /* tree_file = fopen("./primarytree.bin", "r"); //coloque w++ */
-    /* find(238227); */
-
     free(ta_aux);
+
+    tree_file = fopen("./primarytree.bin", "r"); //coloque w++
+    find(2);
+
     fclose(tree_file);
 
     return 0;

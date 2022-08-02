@@ -316,18 +316,18 @@ void insereNoPai(noArvore *no, int chave, int P, int offsetNo)
     apagaParesNo(&dadoPai);
 
     noArvore dadoNovoPai;
-    apagaParesNo(&dadoNovoPai); // precisava de erase
+    apagaParesNo(&dadoNovoPai);
 
     copiaPorPonteiro(&dadoPai, &TP, 0, (ceil(QUANTIDADE_PONTEIROS / 2.0) - 1));
     int indicePaiK =
-        ceil(QUANTIDADE_PONTEIROS / 2.0) - 1; // modifiquei ceil(QUANTIDADE_PONTEIROS/2)-1 para ceil(QUANTIDADE_PONTEIROS/2);
+        ceil(QUANTIDADE_PONTEIROS / 2.0) - 1;
     int paiK = TP.pares[indicePaiK].chave;
 
     fseek(ponteiroArvore, sizeof(cabecalhoArvore) + TAMANHO_BLOCO * pai, SEEK_SET);
     fwrite(&dadoPai, sizeof(noArvore), 1, ponteiroArvore);
 
     copiaPorPonteiro2(&dadoNovoPai, &TP, (ceil(QUANTIDADE_PONTEIROS / 2.0)),
-                       QUANTIDADE_PONTEIROS); // modifiquei ceil(QUANTIDADE_PONTEIROS/2) para ceil(QUANTIDADE_PONTEIROS/2)+1
+                       QUANTIDADE_PONTEIROS);
 
     cabecalhoArvore dadoCabecalho;
     fseek(ponteiroArvore, 0, SEEK_SET);
@@ -353,68 +353,66 @@ void insert(int chave, int P)
   int noAtual;
   fseek(ponteiroArvore, 0, SEEK_SET);
   fread(&dadoCabecalho, sizeof(cabecalhoArvore), 1,
-        ponteiroArvore);                // Lê o cabeçalho no inicio do arquivo;
-  if (dadoCabecalho.enderecoRaiz == -1) // Verifica se já existe uma raiz
+        ponteiroArvore);
+  if (dadoCabecalho.enderecoRaiz == -1)
   {
     noArvore noVazio;
-    for (int i = 0; i < QUANTIDADE_PONTEIROS - 1; i++) // Era N-2
+    for (int i = 0; i < QUANTIDADE_PONTEIROS - 1; i++)
     {
-      noVazio.pares[i].chave = -1;    // inicia as chaves do novo bloco com -1
-      noVazio.pares[i].endereco = -1; // inicia as chaves do novo bloco com -1
+      noVazio.pares[i].chave = -1;
+      noVazio.pares[i].endereco = -1;
     }
     noVazio.ponteiroM = -1;
-    dadoCabecalho.enderecoRaiz = 0; // Seta a raiz como o bloco 0
-    dadoCabecalho.alturaArvore = 1; // Adiciona um level na árvore
-    fwrite(&noVazio, sizeof(noArvore), 1, ponteiroArvore); // Escreve raiz vazia
-    fseek(ponteiroArvore, 0, SEEK_SET); // Seta o cursor para o inicio do arquivo.
+    dadoCabecalho.enderecoRaiz = 0;
+    dadoCabecalho.alturaArvore = 1;
+    fwrite(&noVazio, sizeof(noArvore), 1, ponteiroArvore);
+    fseek(ponteiroArvore, 0, SEEK_SET);
     fwrite(&dadoCabecalho, sizeof(cabecalhoArvore), 1,
-           ponteiroArvore); // Atualiza o cabeçalho do arquivo
+           ponteiroArvore);
   } 
   else 
   {
     fseek(ponteiroArvore, 0, SEEK_SET);
-    fread(&dadoCabecalho, sizeof(cabecalhoArvore), 1, ponteiroArvore); // Lê o cabeçalho da raiz
+    fread(&dadoCabecalho, sizeof(cabecalhoArvore), 1, ponteiroArvore);
     fseek(ponteiroArvore, (dadoCabecalho.enderecoRaiz * TAMANHO_BLOCO),
-          SEEK_CUR); // Acha a raiz
+          SEEK_CUR);
 
-    int notAtual = 1;
-    noAtual = dadoCabecalho.enderecoRaiz; // o level atual começa na raiz
-    while (notAtual !=
-           dadoCabecalho.alturaArvore) // Enquanto não chegou ao nó folha
+    int nivelAtual = 1;
+    noAtual = dadoCabecalho.enderecoRaiz;
+    while (nivelAtual !=
+           dadoCabecalho.alturaArvore)
     {
-      int i = 0; // par P, chave atual no nó
+      int i = 0;
       fread(&noDado, sizeof(noArvore), 1,
-            ponteiroArvore); // Carrega na memória o nó atual para busca
-      vetorPais.push_back(noAtual); // salva uma lista com os nós visitados.
+            ponteiroArvore);
+      vetorPais.push_back(noAtual);
       while (true) 
       {
         if (i == QUANTIDADE_PONTEIROS - 1 && noDado.pares[i - 1].chave < chave) 
         {
           noAtual = noDado.ponteiroM;
           fseek(ponteiroArvore, sizeof(cabecalhoArvore) + noAtual * TAMANHO_BLOCO,
-                SEEK_SET); // Seta o próximo nó a ser lido no arquivo
-          notAtual++;
+                SEEK_SET);
+          nivelAtual++;
           break;
         } 
         else if (noDado.pares[i].chave > chave ||
                    noDado.pares[i].chave ==
-                       -1) // Se achou uma chave Ki que é maior que chave ou se a
-                           // maior chave no nó atual for menor que chave, então
-                           // aponta para o próximo nó
+                       -1)
         {
           noAtual = noDado.pares[i].endereco;
           fseek(ponteiroArvore, sizeof(cabecalhoArvore) + noAtual * TAMANHO_BLOCO,
-                SEEK_SET); // Seta o próximo nó a ser lido no arquivo
-          notAtual++;
+                SEEK_SET);
+          nivelAtual++;
           break;
         }
         i++;
       }
     }
   }
-  vetorPais.push_back(noAtual); // salva uma lista com os nós visitados.
+  vetorPais.push_back(noAtual);
   fread(&noDado, sizeof(noArvore), 1,
-        ponteiroArvore); // Lê o nó folha onde será inserido chave e P
+        ponteiroArvore);
   int quntidadeChaves = contaChaves(noDado);
   if (quntidadeChaves < QUANTIDADE_PONTEIROS - 1) 
   {
@@ -465,53 +463,51 @@ void print_result(dadoBusca d)
 
 dadoBusca find(int chave) 
 {
-  FILE *hash_file = fopen("../thayna/db-tp2/hash.bin", "novaRaiz");
+  FILE *hash_file = fopen("../thayna/db-tp2/hash.bin", "r");
   cabecalhoArvore dadoCabecalho;
   noArvore noDado;
   tipoBloco bloco;
   int noAtual;
   fseek(ponteiroArvore, 0, SEEK_SET);
   fread(&dadoCabecalho, sizeof(cabecalhoArvore), 1,
-        ponteiroArvore);                // Lê o cabeçalho no inicio do arquivo;
-  if (dadoCabecalho.enderecoRaiz == -1) // Verifica se já existe uma raiz
+        ponteiroArvore);
+  if (dadoCabecalho.enderecoRaiz == -1)
   {
     std::cout << "Error: Ávore vazia!!" << std::endl;
   } 
   else 
   {
     fseek(ponteiroArvore, 0, SEEK_SET);
-    fread(&dadoCabecalho, sizeof(cabecalhoArvore), 1, ponteiroArvore); // Lê o cabeçalho da raiz
+    fread(&dadoCabecalho, sizeof(cabecalhoArvore), 1, ponteiroArvore);
     fseek(ponteiroArvore, (dadoCabecalho.enderecoRaiz * TAMANHO_BLOCO),
-          SEEK_CUR); // Acha a raiz
+          SEEK_CUR);
 
-    int notAtual = 1;
-    noAtual = dadoCabecalho.enderecoRaiz; // o level atual começa na raiz
-    while (notAtual !=
-           dadoCabecalho.alturaArvore) // Enquanto não chegou ao nó folha
+    int nivelAtual = 1;
+    noAtual = dadoCabecalho.enderecoRaiz;
+    while (nivelAtual !=
+           dadoCabecalho.alturaArvore)
     {
-      int i = 0; // par P, chave atual no nó
+      int i = 0;
       fread(&noDado, sizeof(noArvore), 1,
-            ponteiroArvore); // Carrega na memória o nó atual para busca
+            ponteiroArvore);
       while (true) 
       {
         if (i == QUANTIDADE_PONTEIROS - 1 && noDado.pares[i - 1].chave < chave) 
         {
           noAtual = noDado.ponteiroM;
           fseek(ponteiroArvore, sizeof(cabecalhoArvore) + noAtual * TAMANHO_BLOCO,
-                SEEK_SET); // Seta o próximo nó a ser lido no arquivo
-          notAtual++;
+                SEEK_SET);
+          nivelAtual++;
           break;
         } 
         else if (noDado.pares[i].chave > chave ||
                    noDado.pares[i].chave ==
-                       -1) // Se achou uma chave Ki que é maior que chave ou se a
-                           // maior chave no nó atual for menor que chave, então
-                           // aponta para o próximo nó
+                       -1)
         {
           noAtual = noDado.pares[i].endereco;
           fseek(ponteiroArvore, sizeof(cabecalhoArvore) + noAtual * TAMANHO_BLOCO,
-                SEEK_SET); // Seta o próximo nó a ser lido no arquivo
-          notAtual++;
+                SEEK_SET);
+          nivelAtual++;
           break;
         }
         i++;
@@ -519,20 +515,15 @@ dadoBusca find(int chave)
     }
     fread(&noDado, sizeof(noArvore), 1, ponteiroArvore);
     int quntidadeChaves = contaChaves(noDado);
-    // std::cout << "quntidadeChaves: " << quntidadeChaves << std::endl;
-    // for (int i = 0; i < quntidadeChaves; i++) 
-    // {
-    //   std::cout << i << " -> " << noDado.pares[i].chave << std::endl;
-    // }
     for (int i = 0; i < quntidadeChaves; i++)
     {
       if (noDado.pares[i].chave == chave)
       {
         int offsetChave = noDado.pares[i].endereco;
         fseek(hash_file, offsetChave * TAMANHO_BLOCO,
-              SEEK_SET); // Aponta para o bucket de acordo com a chave
+              SEEK_SET);
         fread(&bloco, TAMANHO_BLOCO, 1,
-              hash_file); // Carrega o bloco para memória
+              hash_file);
         for (int j = 0; j < bloco.quantidadeArtigos; j++) 
         {
           std::cout << "bloco.id: " << bloco.vetorArtigos[j].ID << std::endl;

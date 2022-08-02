@@ -1,161 +1,9 @@
 #include "csv.h"
-#include <algorithm>
-#include <bits/stdc++.h>
+#include "functions.h"
 #include <cmath>
-#include <cstdio>
 #include <iostream>
 
-#define QUANTIDADE_PONTEIROS 511
-#define QUANTIDADE_BUCKETS 774573
-#define TAMANHO_BLOCO 4096
-
 FILE *ponteiroArvore;
-std::vector<int> vetorPais;
-std::vector<int> vetorPaisFind;
-
-struct tipoArtigoLeitura
-{
-  std::string ID;
-  std::string Titulo;
-  std::string Ano;
-  std::string Autores;
-  std::string Citacoes;
-  std::string Atualizacao;
-  std::string Snippet;
-};
-
-// struct tipoArtigo 
-// {
-//   int ID = 0;
-//   char Titulo[300] = {};
-//   int Ano = 0;
-//   char Autores[150] = {};
-//   int Citacoes = {};
-//   char Atualizacao[20] = {};
-//   char Snippet[1024] = {};
-// };
-
-struct tipoArtigo 
-{
-  int ID;
-  char Titulo[300];
-  int Ano;
-  char Autores[150];
-  int Citacoes;
-  char Atualizacao[20];
-  char Snippet[1024];
-};
-
-struct tipoBloco 
-{
-  int quantidadeArtigos = 0;
-  tipoArtigo vetorArtigos[2] = {};
-};
-
-struct dadoBusca
-{
-  tipoArtigo artigoDado;
-  int quantidadeBlocos;
-  int node_level;
-};
-
-struct cabecalhoArvore 
-{
-  int enderecoRaiz;
-  int quantidadeBlocos;
-  int alturaArvore;
-};
-
-struct parNo
-{
-  int endereco;
-  int chave;
-};
-
-struct noArvore 
-{
-  parNo pares[QUANTIDADE_PONTEIROS - 1];
-  int ponteiroM;
-};
-
-struct noArvoreTemp 
-{
-  parNo pares[QUANTIDADE_PONTEIROS];
-};
-
-struct noArvoreTempPai 
-{
-  parNo pares[QUANTIDADE_PONTEIROS];
-  int ponteiroM;
-};
-
-int funcaoHash(int chave)
-{
-  return (chave - 1) % QUANTIDADE_BUCKETS;
-}
-
-int contaChaves(noArvore noDado) 
-{
-  int counter = 0;
-  while (noDado.pares[counter].chave != -1 && counter != QUANTIDADE_PONTEIROS - 1)
-    counter++;
-  return counter;
-}
-
-int contaPonteiros(noArvore noDado) 
-{
-  int counter = 0;
-  while (noDado.pares[counter].endereco != -1 && counter != QUANTIDADE_PONTEIROS - 1)
-    counter++;
-  if (noDado.ponteiroM != -1) 
-  {
-    counter++;
-  }
-  return counter;
-}
-
-void apagaParesNo(noArvore *no) 
-{
-  for (int i = 0; i < QUANTIDADE_PONTEIROS - 1; i++) 
-  {
-    (*no).pares[i].chave = -1;
-    (*no).pares[i].endereco = -1;
-  }
-  (*no).ponteiroM = -1;
-}
-void copiaParesNo(noArvore *no, noArvoreTemp *tmp, int inicioTemp, int fim) 
-{
-  for (int i = inicioTemp, j = 0; i <= fim; i++, j++) 
-  {
-    (*no).pares[j] = (*tmp).pares[i];
-  }
-}
-
-void copiaTodosParesNo(noArvore *no, noArvoreTemp *tmp) 
-{
-  for (int i = 0; i < QUANTIDADE_PONTEIROS - 1; i++) 
-  {
-    (*tmp).pares[i] = (*no).pares[i];
-  }
-  (*tmp).pares[QUANTIDADE_PONTEIROS - 1].chave = -1;
-  (*tmp).pares[QUANTIDADE_PONTEIROS - 1].endereco = -1;
-}
-
-void moveParesNo(noArvore *no, int pos, int quntidadeChaves) 
-{
-  for (int j = quntidadeChaves + 1; j > pos; j--) 
-  {
-    (*no).pares[j] = (*no).pares[j - 1];
-  }
-}
-
-void moveParesNo(noArvoreTemp *no, int pos, int quntidadeChaves) 
-{
-  for (int j = quntidadeChaves; j > pos; j--) 
-  {
-    (*no).pares[j] = (*no).pares[j - 1];
-  }
-}
 
 void insereNaFolha(noArvore *no, int chave, int P, int quntidadeChaves) 
 {
@@ -208,50 +56,6 @@ void insereNaFolha(noArvoreTemp *tmp, int chave, int P)
       break;
     }
   }
-}
-
-int posicaoPai(int node_offset) 
-{
-  for (int i = 0; i < vetorPais.size(); i++) 
-  {
-    if (node_offset == vetorPais[i])
-    {
-      return vetorPais[i - 1];
-    }
-  }
-  return 0;
-}
-
-void copiaPaiNo(noArvore *P, noArvoreTempPai *TP, int chave, int offsetChave) 
-{
-  int i;
-  for (i = 0; i < QUANTIDADE_PONTEIROS - 1; i++) 
-  {
-    (*TP).pares[i] = (*P).pares[i];
-  }
-  (*TP).pares[i].endereco = (*P).ponteiroM;
-  (*TP).pares[i].chave = chave;
-  (*TP).ponteiroM = offsetChave;
-}
-
-void copiaPorPonteiro(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim) 
-{
-  int i, j;
-  for (i = inicioTemp, j = 0; i < fim; i++, j++) 
-  {
-    (*no).pares[j] = (*TP).pares[i];
-  }
-  (*no).pares[j].endereco = (*TP).pares[i].endereco;
-}
-
-void copiaPorPonteiro2(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim) 
-{
-  int i, j;
-  for (i = inicioTemp, j = 0; i < fim; i++, j++) 
-  {
-    (*no).pares[j] = (*TP).pares[i];
-  }
-  (*no).pares[j].endereco = (*TP).ponteiroM;
 }
 
 void insereNoPai(noArvore *no, int chave, int P, int offsetNo) 
@@ -345,7 +149,7 @@ void insereNoPai(noArvore *no, int chave, int P, int offsetNo)
   }
 }
 
-void insert(int chave, int P) 
+void insere(int chave, int P) 
 {
   vetorPais.clear();
   cabecalhoArvore dadoCabecalho;
@@ -447,21 +251,7 @@ void insert(int chave, int P)
   }
 }
 
-void print_result(dadoBusca d) 
-{
-  std::cout << "Id: " << d.artigoDado.ID << std::endl;
-  std::cout << "Title: " << d.artigoDado.Titulo << std::endl;
-  std::cout << "Year : " << d.artigoDado.Ano << std::endl;
-  std::cout << "Authors: " << d.artigoDado.Autores << std::endl;
-  std::cout << "Citations: " << d.artigoDado.Citacoes << std::endl;
-  std::cout << "Update: " << d.artigoDado.Atualizacao << std::endl;
-  std::cout << "Snippet: " << d.artigoDado.Snippet << std::endl;
-  std::cout << "Blocos lidos: " << d.node_level << std::endl;
-  std::cout << "Quantidade de blocos: " << d.quantidadeBlocos + 1 << std::endl;
-  std::cout << "-----------------------------------------------" << std::endl;
-}
-
-dadoBusca find(int chave) 
+dadoBusca buscaNaArvore(int chave) 
 {
   FILE *hash_file = fopen("../thayna/db-tp2/hash.bin", "r");
   cabecalhoArvore dadoCabecalho;
@@ -530,7 +320,7 @@ dadoBusca find(int chave)
           if (bloco.vetorArtigos[j].ID == chave) {
             dadoBusca result = {bloco.vetorArtigos[j], dadoCabecalho.quantidadeBlocos,
                                 dadoCabecalho.alturaArvore};
-            print_result(result);
+            printDadosBusca(result);
             fclose(hash_file);
             return result;
           }
@@ -545,44 +335,42 @@ dadoBusca find(int chave)
 
 int main() 
 {
+  // bool leitura = true;
+  // ponteiroArvore = fopen("./primarytree.bin", "w+");
+  // cabecalhoArvore a_cabecalho;
+  // a_cabecalho.alturaArvore = 0;
+  // a_cabecalho.quantidadeBlocos = 0;
+  // a_cabecalho.enderecoRaiz = -1;
+  // fwrite(&a_cabecalho, sizeof(cabecalhoArvore), 1, ponteiroArvore);
+  //
+  // io::CSVReader<7, io::trim_chars<>, io::double_quote_escape<';', '\"'>> sample(
+  //     "./artigo.csv");
+  // sample.set_header("ID", "Titulo", "Ano", "Autores", "Citacoes", "Atualizacao",
+  //                   "Snippet");
+  //
+  // tipoArtigoLeitura *ta_aux =
+  //     (tipoArtigoLeitura *)malloc(sizeof(tipoArtigoLeitura));
+  // while (leitura) 
+  // {
+  //   try 
+  //   {
+  //     if (leitura = sample.read_row(ta_aux->ID, ta_aux->Titulo, ta_aux->Ano,
+  //                                   ta_aux->Autores, ta_aux->Citacoes,
+  //                                   ta_aux->Atualizacao, ta_aux->Snippet)) 
+  //     {
+  //       int id = std::stoi(ta_aux->ID);
+  //       insere(id, funcaoHash(id));
+  //       std::cout << "Inserindo id: " << ta_aux->ID << std::endl;
+  //     }
+  //   } 
+  //   catch (io::error::too_few_columns) {}
+  //   catch (io::error::escaped_string_not_closed) {}
+  // }
+  // free(ta_aux);
+  // fclose(ponteiroArvore);
 
-  bool leitura = true;
-  ponteiroArvore = fopen("./primarytree.bin", "w+"); // coloque w++
-
-  cabecalhoArvore a_cabecalho;
-  a_cabecalho.alturaArvore = 0;
-  a_cabecalho.quantidadeBlocos = 0;
-  a_cabecalho.enderecoRaiz = -1;
-  fwrite(&a_cabecalho, sizeof(cabecalhoArvore), 1, ponteiroArvore);
-
-  io::CSVReader<7, io::trim_chars<>, io::double_quote_escape<';', '\"'>> sample(
-      "sample_final.csv");
-  sample.set_header("ID", "Titulo", "Ano", "Autores", "Citacoes", "Atualizacao",
-                    "Snippet");
-
-  tipoArtigoLeitura *ta_aux =
-      (tipoArtigoLeitura *)malloc(sizeof(tipoArtigoLeitura));
-  while (leitura) 
-  {
-    try 
-    {
-      if (leitura = sample.read_row(ta_aux->ID, ta_aux->Titulo, ta_aux->Ano,
-                                    ta_aux->Autores, ta_aux->Citacoes,
-                                    ta_aux->Atualizacao, ta_aux->Snippet)) 
-      {
-        int id = std::stoi(ta_aux->ID);
-        insert(id, funcaoHash(id));
-        std::cout << "Inserindo id: " << ta_aux->ID << std::endl;
-      }
-    } 
-    catch (io::error::too_few_columns) {}
-  }
-  free(ta_aux);
-
-  // ponteiroArvore = fopen("./primarytree.bin", "novaRaiz"); //coloque w++
-  // find(2);
-
-  fclose(ponteiroArvore);
+  ponteiroArvore = fopen("./primarytree.bin", "r");
+  buscaNaArvore(500000);
 
   return 0;
 }

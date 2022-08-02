@@ -316,7 +316,6 @@ dadoBusca buscaNaArvore(int chave)
               hash_file);
         for (int j = 0; j < bloco.quantidadeArtigos; j++) 
         {
-          std::cout << "bloco.id: " << bloco.vetorArtigos[j].ID << std::endl;
           if (bloco.vetorArtigos[j].ID == chave) {
             dadoBusca result = {bloco.vetorArtigos[j], dadoCabecalho.quantidadeBlocos,
                                 dadoCabecalho.alturaArvore};

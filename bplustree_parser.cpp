@@ -102,14 +102,16 @@ void erase_pairs(node* L)
 }
 void copy_pairs(node* L, nodeT* T, int beginT, int end)
 {
-    for(int i = beginT, j = 0; i <= end; i++, j++){
+    for(int i = beginT, j = 0; i <= end; i++, j++)
+    {
         (*L).pairs[j] = (*T).pairs[i];
     }
 }
 
 void copy_all_pairs(node *L, nodeT* T)
 {
-    for(int i = 0; i < N-1; i++){
+    for(int i = 0; i < N-1; i++)
+    {
         (*T).pairs[i] = (*L).pairs[i];
     }
     (*T).pairs[N-1].key = -1;    
@@ -355,7 +357,8 @@ void insert(int K, int P)
             parents.push_back(current_node);                            //salva uma lista com os nós visitados.
             while(true)
             {
-                if(i == N-1 && node_data.pairs[i-1].key < K) {
+                if(i == N-1 && node_data.pairs[i-1].key < K) 
+                {
                     current_node = node_data.pointer;
                     fseek(tree_file, sizeof(head)+current_node*BLOCK_LENGTH, SEEK_SET);  //Seta o próximo nó a ser lido no arquivo
                     current_level++;

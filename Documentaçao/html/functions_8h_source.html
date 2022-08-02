@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TP2_BD: Código-Fonte de functions.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TP2_BD<span id="projectnumber">&#160;0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Busca','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">functions.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="functions_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="dados_8h.html">dados.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="functions_8h.html#af4ff71ce2eb2e468455c9abcf50acd4c">    6</a></span>std::vector&lt;int&gt; <a class="code hl_variable" href="functions_8h.html#af4ff71ce2eb2e468455c9abcf50acd4c">vetorPais</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="functions_8h.html#ad29ba3344426704661116dbe91e57863">    7</a></span>std::vector&lt;int&gt; <a class="code hl_variable" href="functions_8h.html#ad29ba3344426704661116dbe91e57863">vetorPaisFind</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="functions_8h.html#a747a01173ecccb998a3b181b9d15649e">   13</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="functions_8h.html#a747a01173ecccb998a3b181b9d15649e">funcaoHash</a>(<span class="keywordtype">int</span> chave)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keywordflow">return</span> (chave - 1) % <a class="code hl_define" href="dados_8h.html#a532ff24a73a97397a304d8c3b85627e5">QUANTIDADE_BUCKETS</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="functions_8h.html#ad64113adf109bb0a12945e22b09548b1">   20</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="functions_8h.html#ad64113adf109bb0a12945e22b09548b1">contaChaves</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> noDado) </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">int</span> counter = 0;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordflow">while</span> (noDado.<a class="code hl_variable" href="structno_arvore.html#a5ea7db53d734a1ba449f1e1aee502e60">pares</a>[counter].<a class="code hl_variable" href="structpar_no.html#acab05c4573c262fb33af2c5a1e0c191f">chave</a> != -1 &amp;&amp; counter != <a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    counter++;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordflow">return</span> counter;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="functions_8h.html#a55108808a9233412616e475a8595ed62">   30</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="functions_8h.html#a55108808a9233412616e475a8595ed62">contaPonteiros</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> noDado) </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordtype">int</span> counter = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keywordflow">while</span> (noDado.<a class="code hl_variable" href="structno_arvore.html#a5ea7db53d734a1ba449f1e1aee502e60">pares</a>[counter].<a class="code hl_variable" href="structpar_no.html#a8dde102a182cea5a04c55de2d5b21e17">endereco</a> != -1 &amp;&amp; counter != <a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    counter++;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordflow">if</span> (noDado.<a class="code hl_variable" href="structno_arvore.html#a2757f3dc0d26682c3b69425e096b66e6">ponteiroM</a> != -1) </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    counter++;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordflow">return</span> counter;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="functions_8h.html#a25fe731c016d2547b7b7ebf35fbc8a17">   44</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#a25fe731c016d2547b7b7ebf35fbc8a17">apagaParesNo</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *no) </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1; i++) </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    (*no).pares[i].chave = -1;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    (*no).pares[i].endereco = -1;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  (*no).ponteiroM = -1;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="functions_8h.html#a78d576d697416625fa710b67713cb992">   56</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#a78d576d697416625fa710b67713cb992">copiaParesNo</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *no, <a class="code hl_struct" href="structno_arvore_temp.html">noArvoreTemp</a> *tmp, <span class="keywordtype">int</span> inicioTemp, <span class="keywordtype">int</span> fim) </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = inicioTemp, j = 0; i &lt;= fim; i++, j++) </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    (*no).pares[j] = (*tmp).pares[i];</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="functions_8h.html#a1776127efeee9c4d501a055edbbedbb1">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#a1776127efeee9c4d501a055edbbedbb1">copiaTodosParesNo</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *no, <a class="code hl_struct" href="structno_arvore_temp.html">noArvoreTemp</a> *tmp) </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1; i++) </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    (*tmp).pares[i] = (*no).pares[i];</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  (*tmp).pares[<a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1].chave = -1;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  (*tmp).pares[<a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1].endereco = -1;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="functions_8h.html#afc5a1187913773195e9fab2eae27d473">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#afc5a1187913773195e9fab2eae27d473">moveParesNo</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *no, <span class="keywordtype">int</span> pos, <span class="keywordtype">int</span> quntidadeChaves) </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = quntidadeChaves + 1; j &gt; pos; j--) </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    (*no).pares[j] = (*no).pares[j - 1];</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="functions_8h.html#a03378209c5778e6212ea37e769634553">   88</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#afc5a1187913773195e9fab2eae27d473">moveParesNo</a>(<a class="code hl_struct" href="structno_arvore_temp.html">noArvoreTemp</a> *no, <span class="keywordtype">int</span> pos, <span class="keywordtype">int</span> quntidadeChaves) </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = quntidadeChaves; j &gt; pos; j--) </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    (*no).pares[j] = (*no).pares[j - 1];</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="functions_8h.html#a5e0796ca7ecc12d0246d346b5ae613d6">   98</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="functions_8h.html#a5e0796ca7ecc12d0246d346b5ae613d6">posicaoPai</a>(<span class="keywordtype">int</span> node_offset) </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="functions_8h.html#af4ff71ce2eb2e468455c9abcf50acd4c">vetorPais</a>.size(); i++) </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (node_offset == <a class="code hl_variable" href="functions_8h.html#af4ff71ce2eb2e468455c9abcf50acd4c">vetorPais</a>[i])</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="functions_8h.html#af4ff71ce2eb2e468455c9abcf50acd4c">vetorPais</a>[i - 1];</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="functions_8h.html#a28ffcbebd412f4c638f364db3092533c">  112</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#a28ffcbebd412f4c638f364db3092533c">copiaPaiNo</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *P, <a class="code hl_struct" href="structno_arvore_temp_pai.html">noArvoreTempPai</a> *TP, <span class="keywordtype">int</span> chave, <span class="keywordtype">int</span> offsetChave) </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_define" href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a> - 1; i++) </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    (*TP).pares[i] = (*P).pares[i];</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  (*TP).pares[i].endereco = (*P).ponteiroM;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  (*TP).pares[i].chave = chave;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  (*TP).ponteiroM = offsetChave;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="functions_8h.html#a53fa74d3dd43802203d81b5a78f31a9d">  126</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#a53fa74d3dd43802203d81b5a78f31a9d">copiaPorPonteiro</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *no, <a class="code hl_struct" href="structno_arvore_temp_pai.html">noArvoreTempPai</a> *TP, <span class="keywordtype">int</span> inicioTemp, <span class="keywordtype">int</span> fim) </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordflow">for</span> (i = inicioTemp, j = 0; i &lt; fim; i++, j++) </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    (*no).pares[j] = (*TP).pares[i];</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  (*no).pares[j].endereco = (*TP).pares[i].endereco;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="functions_8h.html#aef2308acb8dbc5d3741f3c0b6cb4b3b5">  138</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#aef2308acb8dbc5d3741f3c0b6cb4b3b5">copiaPorPonteiro2</a>(<a class="code hl_struct" href="structno_arvore.html">noArvore</a> *no, <a class="code hl_struct" href="structno_arvore_temp_pai.html">noArvoreTempPai</a> *TP, <span class="keywordtype">int</span> inicioTemp, <span class="keywordtype">int</span> fim) </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>{</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="keywordflow">for</span> (i = inicioTemp, j = 0; i &lt; fim; i++, j++) </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    (*no).pares[j] = (*TP).pares[i];</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  (*no).pares[j].endereco = (*TP).ponteiroM;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="functions_8h.html#a014ef3e61e8ed4393850ad37d10fe528">  151</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="functions_8h.html#a014ef3e61e8ed4393850ad37d10fe528">printDadosBusca</a>(<a class="code hl_struct" href="structdado_busca.html">dadoBusca</a> d) </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Id: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#a2893c9bac873557ac3e37cbf1094932c">ID</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Title: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#ad86aae3e64103dc436f6fd651e3207cb">Titulo</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Year : &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#a05d8b421365efdd24470dcadf568e7d3">Ano</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Authors: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#a202cebcaaf8ee7c97760271a342914eb">Autores</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Citations: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#a4581dda7087b6514b7f56bfe2afaafba">Citacoes</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Update: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#a2bb93b13ea43962ca39def8d27a672b9">Atualizacao</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Snippet: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">artigoDado</a>.<a class="code hl_variable" href="structtipo_artigo.html#a54a14c518ec669a9ea7b94e08e3c86ce">Snippet</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Blocos lidos: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a665806d7ab60a66d07fc090608bc5dde">node_level</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Quantidade de blocos: &quot;</span> &lt;&lt; d.<a class="code hl_variable" href="structdado_busca.html#a84650b1c7aa6d31634b16c6557980bb0">quantidadeBlocos</a> + 1 &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+<div class="ttc" id="adados_8h_html"><div class="ttname"><a href="dados_8h.html">dados.h</a></div></div>
+<div class="ttc" id="adados_8h_html_a532ff24a73a97397a304d8c3b85627e5"><div class="ttname"><a href="dados_8h.html#a532ff24a73a97397a304d8c3b85627e5">QUANTIDADE_BUCKETS</a></div><div class="ttdeci">#define QUANTIDADE_BUCKETS</div><div class="ttdef"><b>Definition:</b> dados.h:2</div></div>
+<div class="ttc" id="adados_8h_html_adac815ccf1423ed45969db319043cb75"><div class="ttname"><a href="dados_8h.html#adac815ccf1423ed45969db319043cb75">QUANTIDADE_PONTEIROS</a></div><div class="ttdeci">#define QUANTIDADE_PONTEIROS</div><div class="ttdef"><b>Definition:</b> dados.h:1</div></div>
+<div class="ttc" id="afunctions_8h_html_a014ef3e61e8ed4393850ad37d10fe528"><div class="ttname"><a href="functions_8h.html#a014ef3e61e8ed4393850ad37d10fe528">printDadosBusca</a></div><div class="ttdeci">void printDadosBusca(dadoBusca d)</div><div class="ttdef"><b>Definition:</b> functions.h:151</div></div>
+<div class="ttc" id="afunctions_8h_html_a1776127efeee9c4d501a055edbbedbb1"><div class="ttname"><a href="functions_8h.html#a1776127efeee9c4d501a055edbbedbb1">copiaTodosParesNo</a></div><div class="ttdeci">void copiaTodosParesNo(noArvore *no, noArvoreTemp *tmp)</div><div class="ttdef"><b>Definition:</b> functions.h:66</div></div>
+<div class="ttc" id="afunctions_8h_html_a25fe731c016d2547b7b7ebf35fbc8a17"><div class="ttname"><a href="functions_8h.html#a25fe731c016d2547b7b7ebf35fbc8a17">apagaParesNo</a></div><div class="ttdeci">void apagaParesNo(noArvore *no)</div><div class="ttdef"><b>Definition:</b> functions.h:44</div></div>
+<div class="ttc" id="afunctions_8h_html_a28ffcbebd412f4c638f364db3092533c"><div class="ttname"><a href="functions_8h.html#a28ffcbebd412f4c638f364db3092533c">copiaPaiNo</a></div><div class="ttdeci">void copiaPaiNo(noArvore *P, noArvoreTempPai *TP, int chave, int offsetChave)</div><div class="ttdef"><b>Definition:</b> functions.h:112</div></div>
+<div class="ttc" id="afunctions_8h_html_a53fa74d3dd43802203d81b5a78f31a9d"><div class="ttname"><a href="functions_8h.html#a53fa74d3dd43802203d81b5a78f31a9d">copiaPorPonteiro</a></div><div class="ttdeci">void copiaPorPonteiro(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim)</div><div class="ttdef"><b>Definition:</b> functions.h:126</div></div>
+<div class="ttc" id="afunctions_8h_html_a55108808a9233412616e475a8595ed62"><div class="ttname"><a href="functions_8h.html#a55108808a9233412616e475a8595ed62">contaPonteiros</a></div><div class="ttdeci">int contaPonteiros(noArvore noDado)</div><div class="ttdef"><b>Definition:</b> functions.h:30</div></div>
+<div class="ttc" id="afunctions_8h_html_a5e0796ca7ecc12d0246d346b5ae613d6"><div class="ttname"><a href="functions_8h.html#a5e0796ca7ecc12d0246d346b5ae613d6">posicaoPai</a></div><div class="ttdeci">int posicaoPai(int node_offset)</div><div class="ttdef"><b>Definition:</b> functions.h:98</div></div>
+<div class="ttc" id="afunctions_8h_html_a747a01173ecccb998a3b181b9d15649e"><div class="ttname"><a href="functions_8h.html#a747a01173ecccb998a3b181b9d15649e">funcaoHash</a></div><div class="ttdeci">int funcaoHash(int chave)</div><div class="ttdef"><b>Definition:</b> functions.h:13</div></div>
+<div class="ttc" id="afunctions_8h_html_a78d576d697416625fa710b67713cb992"><div class="ttname"><a href="functions_8h.html#a78d576d697416625fa710b67713cb992">copiaParesNo</a></div><div class="ttdeci">void copiaParesNo(noArvore *no, noArvoreTemp *tmp, int inicioTemp, int fim)</div><div class="ttdef"><b>Definition:</b> functions.h:56</div></div>
+<div class="ttc" id="afunctions_8h_html_ad29ba3344426704661116dbe91e57863"><div class="ttname"><a href="functions_8h.html#ad29ba3344426704661116dbe91e57863">vetorPaisFind</a></div><div class="ttdeci">std::vector&lt; int &gt; vetorPaisFind</div><div class="ttdef"><b>Definition:</b> functions.h:7</div></div>
+<div class="ttc" id="afunctions_8h_html_ad64113adf109bb0a12945e22b09548b1"><div class="ttname"><a href="functions_8h.html#ad64113adf109bb0a12945e22b09548b1">contaChaves</a></div><div class="ttdeci">int contaChaves(noArvore noDado)</div><div class="ttdef"><b>Definition:</b> functions.h:20</div></div>
+<div class="ttc" id="afunctions_8h_html_aef2308acb8dbc5d3741f3c0b6cb4b3b5"><div class="ttname"><a href="functions_8h.html#aef2308acb8dbc5d3741f3c0b6cb4b3b5">copiaPorPonteiro2</a></div><div class="ttdeci">void copiaPorPonteiro2(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim)</div><div class="ttdef"><b>Definition:</b> functions.h:138</div></div>
+<div class="ttc" id="afunctions_8h_html_af4ff71ce2eb2e468455c9abcf50acd4c"><div class="ttname"><a href="functions_8h.html#af4ff71ce2eb2e468455c9abcf50acd4c">vetorPais</a></div><div class="ttdeci">std::vector&lt; int &gt; vetorPais</div><div class="ttdef"><b>Definition:</b> functions.h:6</div></div>
+<div class="ttc" id="afunctions_8h_html_afc5a1187913773195e9fab2eae27d473"><div class="ttname"><a href="functions_8h.html#afc5a1187913773195e9fab2eae27d473">moveParesNo</a></div><div class="ttdeci">void moveParesNo(noArvore *no, int pos, int quntidadeChaves)</div><div class="ttdef"><b>Definition:</b> functions.h:78</div></div>
+<div class="ttc" id="astructdado_busca_html"><div class="ttname"><a href="structdado_busca.html">dadoBusca</a></div><div class="ttdef"><b>Definition:</b> dados.h:47</div></div>
+<div class="ttc" id="astructdado_busca_html_a27b9b7999b98437322de7408d26c393c"><div class="ttname"><a href="structdado_busca.html#a27b9b7999b98437322de7408d26c393c">dadoBusca::artigoDado</a></div><div class="ttdeci">tipoArtigo artigoDado</div><div class="ttdef"><b>Definition:</b> dados.h:48</div></div>
+<div class="ttc" id="astructdado_busca_html_a665806d7ab60a66d07fc090608bc5dde"><div class="ttname"><a href="structdado_busca.html#a665806d7ab60a66d07fc090608bc5dde">dadoBusca::node_level</a></div><div class="ttdeci">int node_level</div><div class="ttdef"><b>Definition:</b> dados.h:50</div></div>
+<div class="ttc" id="astructdado_busca_html_a84650b1c7aa6d31634b16c6557980bb0"><div class="ttname"><a href="structdado_busca.html#a84650b1c7aa6d31634b16c6557980bb0">dadoBusca::quantidadeBlocos</a></div><div class="ttdeci">int quantidadeBlocos</div><div class="ttdef"><b>Definition:</b> dados.h:49</div></div>
+<div class="ttc" id="astructno_arvore_html"><div class="ttname"><a href="structno_arvore.html">noArvore</a></div><div class="ttdef"><b>Definition:</b> dados.h:67</div></div>
+<div class="ttc" id="astructno_arvore_html_a2757f3dc0d26682c3b69425e096b66e6"><div class="ttname"><a href="structno_arvore.html#a2757f3dc0d26682c3b69425e096b66e6">noArvore::ponteiroM</a></div><div class="ttdeci">int ponteiroM</div><div class="ttdef"><b>Definition:</b> dados.h:69</div></div>
+<div class="ttc" id="astructno_arvore_html_a5ea7db53d734a1ba449f1e1aee502e60"><div class="ttname"><a href="structno_arvore.html#a5ea7db53d734a1ba449f1e1aee502e60">noArvore::pares</a></div><div class="ttdeci">parNo pares[QUANTIDADE_PONTEIROS - 1]</div><div class="ttdef"><b>Definition:</b> dados.h:68</div></div>
+<div class="ttc" id="astructno_arvore_temp_html"><div class="ttname"><a href="structno_arvore_temp.html">noArvoreTemp</a></div><div class="ttdef"><b>Definition:</b> dados.h:73</div></div>
+<div class="ttc" id="astructno_arvore_temp_pai_html"><div class="ttname"><a href="structno_arvore_temp_pai.html">noArvoreTempPai</a></div><div class="ttdef"><b>Definition:</b> dados.h:78</div></div>
+<div class="ttc" id="astructpar_no_html_a8dde102a182cea5a04c55de2d5b21e17"><div class="ttname"><a href="structpar_no.html#a8dde102a182cea5a04c55de2d5b21e17">parNo::endereco</a></div><div class="ttdeci">int endereco</div><div class="ttdef"><b>Definition:</b> dados.h:62</div></div>
+<div class="ttc" id="astructpar_no_html_acab05c4573c262fb33af2c5a1e0c191f"><div class="ttname"><a href="structpar_no.html#acab05c4573c262fb33af2c5a1e0c191f">parNo::chave</a></div><div class="ttdeci">int chave</div><div class="ttdef"><b>Definition:</b> dados.h:63</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a05d8b421365efdd24470dcadf568e7d3"><div class="ttname"><a href="structtipo_artigo.html#a05d8b421365efdd24470dcadf568e7d3">tipoArtigo::Ano</a></div><div class="ttdeci">int Ano</div><div class="ttdef"><b>Definition:</b> dados.h:33</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a202cebcaaf8ee7c97760271a342914eb"><div class="ttname"><a href="structtipo_artigo.html#a202cebcaaf8ee7c97760271a342914eb">tipoArtigo::Autores</a></div><div class="ttdeci">char Autores[150]</div><div class="ttdef"><b>Definition:</b> dados.h:34</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a2893c9bac873557ac3e37cbf1094932c"><div class="ttname"><a href="structtipo_artigo.html#a2893c9bac873557ac3e37cbf1094932c">tipoArtigo::ID</a></div><div class="ttdeci">int ID</div><div class="ttdef"><b>Definition:</b> dados.h:31</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a2bb93b13ea43962ca39def8d27a672b9"><div class="ttname"><a href="structtipo_artigo.html#a2bb93b13ea43962ca39def8d27a672b9">tipoArtigo::Atualizacao</a></div><div class="ttdeci">char Atualizacao[20]</div><div class="ttdef"><b>Definition:</b> dados.h:36</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a4581dda7087b6514b7f56bfe2afaafba"><div class="ttname"><a href="structtipo_artigo.html#a4581dda7087b6514b7f56bfe2afaafba">tipoArtigo::Citacoes</a></div><div class="ttdeci">int Citacoes</div><div class="ttdef"><b>Definition:</b> dados.h:35</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a54a14c518ec669a9ea7b94e08e3c86ce"><div class="ttname"><a href="structtipo_artigo.html#a54a14c518ec669a9ea7b94e08e3c86ce">tipoArtigo::Snippet</a></div><div class="ttdeci">char Snippet[1024]</div><div class="ttdef"><b>Definition:</b> dados.h:37</div></div>
+<div class="ttc" id="astructtipo_artigo_html_ad86aae3e64103dc436f6fd651e3207cb"><div class="ttname"><a href="structtipo_artigo.html#ad86aae3e64103dc436f6fd651e3207cb">tipoArtigo::Titulo</a></div><div class="ttdeci">char Titulo[300]</div><div class="ttdef"><b>Definition:</b> dados.h:32</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

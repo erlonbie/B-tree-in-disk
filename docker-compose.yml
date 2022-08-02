@@ -1,0 +1,18 @@
+version: "3"
+services:
+  python:
+    build:
+      context: .
+    volumes:
+      - ./:/app
+    networks:
+      - app-net
+    stdin_open: true
+    tty: true
+    container_name: "tp2_aldemir_erlon_glenn_"
+
+volumes:
+  postgres:
+
+networks:
+  app-net:

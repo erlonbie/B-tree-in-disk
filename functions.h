@@ -6,11 +6,17 @@
 std::vector<int> vetorPais;
 std::vector<int> vetorPaisFind;
 
+/**
+ * Cria um hash para uma determinada chave
+ *
+ * A implementação foi a mais simples possível com uma função mod %*/
 int funcaoHash(int chave)
 {
   return (chave - 1) % QUANTIDADE_BUCKETS;
 }
 
+/**
+ * Retorna a quantidade de chaves existentes em um nó **/
 int contaChaves(noArvore noDado) 
 {
   int counter = 0;
@@ -19,6 +25,8 @@ int contaChaves(noArvore noDado)
   return counter;
 }
 
+/**
+ * Retorna a quantidade de ponteiros existente em um nó **/
 int contaPonteiros(noArvore noDado) 
 {
   int counter = 0;
@@ -31,6 +39,8 @@ int contaPonteiros(noArvore noDado)
   return counter;
 }
 
+/**
+ * Apaga os valores de chave e ponteiro, setando para -1 **/
 void apagaParesNo(noArvore *no) 
 {
   for (int i = 0; i < QUANTIDADE_PONTEIROS - 1; i++) 
@@ -40,6 +50,9 @@ void apagaParesNo(noArvore *no)
   }
   (*no).ponteiroM = -1;
 }
+
+/**
+ * Copia os valores de um nó auxiliar (noArvoreTemp) para o nó noArvore de um determinada posição a outra **/
 void copiaParesNo(noArvore *no, noArvoreTemp *tmp, int inicioTemp, int fim) 
 {
   for (int i = inicioTemp, j = 0; i <= fim; i++, j++) 
@@ -48,6 +61,8 @@ void copiaParesNo(noArvore *no, noArvoreTemp *tmp, int inicioTemp, int fim)
   }
 }
 
+/**
+ * Copia todos os valores de noArvore para uma noArvoreTemp **/
 void copiaTodosParesNo(noArvore *no, noArvoreTemp *tmp) 
 {
   for (int i = 0; i < QUANTIDADE_PONTEIROS - 1; i++) 
@@ -58,6 +73,8 @@ void copiaTodosParesNo(noArvore *no, noArvoreTemp *tmp)
   (*tmp).pares[QUANTIDADE_PONTEIROS - 1].endereco = -1;
 }
 
+/**
+ * Desloca os valores de um determinado nó para a inserção de uma nova chave **/
 void moveParesNo(noArvore *no, int pos, int quntidadeChaves) 
 {
   for (int j = quntidadeChaves + 1; j > pos; j--) 
@@ -66,6 +83,8 @@ void moveParesNo(noArvore *no, int pos, int quntidadeChaves)
   }
 }
 
+/**
+ * Desloca os valores de um determinado nó para a inserção de uma nova chave **/
 void moveParesNo(noArvoreTemp *no, int pos, int quntidadeChaves) 
 {
   for (int j = quntidadeChaves; j > pos; j--) 
@@ -74,7 +93,8 @@ void moveParesNo(noArvoreTemp *no, int pos, int quntidadeChaves)
   }
 }
 
-
+/**
+ * Retorna a posição do pai de um determinado nó em relação ao caminho feito na inserção ou busca */
 int posicaoPai(int node_offset) 
 {
   for (int i = 0; i < vetorPais.size(); i++) 
@@ -87,6 +107,8 @@ int posicaoPai(int node_offset)
   return 0;
 }
 
+/**
+ * Copia todos os ponteiros e chavesde um nó noArvore para um nó noArvoreTempPai, e aadiciona chave e offsetChave no final  */
 void copiaPaiNo(noArvore *P, noArvoreTempPai *TP, int chave, int offsetChave) 
 {
   int i;
@@ -99,6 +121,8 @@ void copiaPaiNo(noArvore *P, noArvoreTempPai *TP, int chave, int offsetChave)
   (*TP).ponteiroM = offsetChave;
 }
 
+/**
+ * Copia os valores de um nó noArvoreTempPai para um nó noArvore, de 0 à teto(N/2)-1  */
 void copiaPorPonteiro(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim) 
 {
   int i, j;
@@ -109,6 +133,8 @@ void copiaPorPonteiro(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim
   (*no).pares[j].endereco = (*TP).pares[i].endereco;
 }
 
+/**
+ * Copia os valores de um nó noArvoreTempPai para um nó noArvore, de teto(N/2) à até o fim(N)  */
 void copiaPorPonteiro2(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fim) 
 {
   int i, j;
@@ -120,6 +146,8 @@ void copiaPorPonteiro2(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fi
 }
 
 
+/**
+ * Imprime os dados de um bloco no arquivo de hash se a consulta for bem sucedida */
 void printDadosBusca(dadoBusca d) 
 {
   std::cout << "Id: " << d.artigoDado.ID << std::endl;

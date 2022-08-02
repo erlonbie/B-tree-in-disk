@@ -9,7 +9,7 @@ services:
       - app-net
     stdin_open: true
     tty: true
-    container_name: "tp2_aldemir_erlon_glenn_"
+    container_name: "tp2_aldemir_erlon_glenn"
 
 volumes:
   postgres:

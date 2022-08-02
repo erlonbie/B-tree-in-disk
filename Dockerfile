@@ -6,10 +6,8 @@ COPY . .
 
 RUN apt -y update && apt install -y cmake g++ make git
 
-# RUN fallocate -l 4G hash.bin
+RUN fallocate -l 4G hash.bin
 
 WORKDIR /app
-
-# RUN cmake .. && make
 
 CMD ["bash"]

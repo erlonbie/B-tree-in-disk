@@ -1,3 +1,4 @@
+#define CSV_IO_NO_THREAD
 #include "csv.h"
 #include "functions.h"
 #include <cmath>

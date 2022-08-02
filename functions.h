@@ -150,12 +150,12 @@ void copiaPorPonteiro2(noArvore *no, noArvoreTempPai *TP, int inicioTemp, int fi
  * Imprime os dados de um bloco no arquivo de hash se a consulta for bem sucedida */
 void printDadosBusca(dadoBusca d) 
 {
-  std::cout << "Id: " << d.artigoDado.ID << std::endl;
-  std::cout << "Title: " << d.artigoDado.Titulo << std::endl;
-  std::cout << "Year : " << d.artigoDado.Ano << std::endl;
-  std::cout << "Authors: " << d.artigoDado.Autores << std::endl;
-  std::cout << "Citations: " << d.artigoDado.Citacoes << std::endl;
-  std::cout << "Update: " << d.artigoDado.Atualizacao << std::endl;
+  std::cout << "ID: " << d.artigoDado.ID << std::endl;
+  std::cout << "Titulo: " << d.artigoDado.Titulo << std::endl;
+  std::cout << "Ano : " << d.artigoDado.Ano << std::endl;
+  std::cout << "Autores: " << d.artigoDado.Autores << std::endl;
+  std::cout << "Citacoes: " << d.artigoDado.Citacoes << std::endl;
+  std::cout << "Atualizacao: " << d.artigoDado.Atualizacao << std::endl;
   std::cout << "Snippet: " << d.artigoDado.Snippet << std::endl;
   std::cout << "Blocos lidos: " << d.node_level << std::endl;
   std::cout << "Quantidade de blocos: " << d.quantidadeBlocos + 1 << std::endl;

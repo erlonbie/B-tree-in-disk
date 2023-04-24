@@ -1,5 +1,7 @@
 # TP2
 
+OBS: tentar comentar ou descomentar o #define CSV_IO_NO_THREAD na primeira linha do arquivo upload.cpp para tentar rodar dentro do container.
+
 ## Como rodar o projeto
 
 Rodar em 1 comando:
@@ -27,6 +29,7 @@ make compile-upload
 make compile-findrec
 make compile-seek1
 ```
+
 To end:
 
 ```

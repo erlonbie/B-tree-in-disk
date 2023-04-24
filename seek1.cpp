@@ -10,7 +10,9 @@ FILE *ponteiroArvore;
  *
  * - Se a busca for bem sucedida, retorna as informações da registro cuja chave corresponde à chave de busca
  *
- * - Caso contrário, retorna uma mensagem informando que ao registro não pode ser encontrado*/
+ * - Caso contrário, retorna uma mensagem informando que ao registro não pode ser encontrado
+ *
+ * Autor: Erlon  */
 dadoBusca buscaNaArvore(int chave) 
 {
   FILE *ponteiroHash = fopen("./hash.bin", "r");

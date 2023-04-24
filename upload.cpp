@@ -7,7 +7,9 @@
 FILE *ponteiroArvore;
 
 /**
- * Essa função insere na folha sempre quando há espaço no nó */
+ * Essa função insere na folha sempre quando há espaço no nó 
+ *
+ * Autor: Aldemir*/
 void insereNaFolha(noArvore *no, int chave, int P, int quntidadeChaves) 
 {
   int i;
@@ -41,7 +43,9 @@ void insereNaFolha(noArvore *no, int chave, int P, int quntidadeChaves)
 }
 
 /**
- * Função chamada dentro da funcão insere quando a quantidade de chaves não é menor que N-1 */
+ * Função chamada dentro da funcão insere quando a quantidade de chaves não é menor que N-1 
+ *
+ * Autor: Glenn*/
 void insereNaFolha(noArvoreTemp *tmp, int chave, int P) 
 {
   if (chave < (*tmp).pares[0].chave) 
@@ -68,7 +72,9 @@ void insereNaFolha(noArvoreTemp *tmp, int chave, int P)
  *
  * É feito então um split das folhas, tranferindo a chave a ser inserida para um nó pai.
  *
- * Se esse processo não for sufuciente, a chave a ser inserida é propagada até chegar na raiz da árvore*/
+ * Se esse processo não for sufuciente, a chave a ser inserida é propagada até chegar na raiz da árvore
+ *
+ * Autor: Erlon*/
 void insereNoPai(noArvore *no, int chave, int P, int offsetNo) 
 {
   if (vetorPais[0] == offsetNo) 
@@ -161,7 +167,9 @@ void insereNoPai(noArvore *no, int chave, int P, int offsetNo)
 }
 
 /**
- * Função principal que começa o processo de inserção.*/
+ * Função principal que começa o processo de inserção. 
+ *
+ * Autores: Erlon, Glenn e Aldemir*/
 void insere(int chave, int P) 
 {
   vetorPais.clear();

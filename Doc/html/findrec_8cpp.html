@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TP2_BD: Referência do Arquivo findrec.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TP2_BD<span id="projectnumber">&#160;0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Busca','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência do Arquivo findrec.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="csv_8h_source.html">csv.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="functions_8h_source.html">functions.h</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="findrec_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Funções</h2>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">    6</span>                                {</div>
+<div class="line"><span class="lineno">    7</span>    FILE *ponteiroHash = fopen(<span class="stringliteral">&quot;./hash.bin&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line"><span class="lineno">    8</span>    std::string sEntrada = argv[1];</div>
+<div class="line"><span class="lineno">    9</span>    <span class="keywordtype">int</span> idPesquisa = stoi(sEntrada);</div>
+<div class="line"><span class="lineno">   10</span>    </div>
+<div class="line"><span class="lineno">   11</span>    <a class="code hl_struct" href="structtipo_bloco.html">tipoBloco</a> bloco;</div>
+<div class="line"><span class="lineno">   12</span>    <a class="code hl_struct" href="structtipo_artigo.html">tipoArtigo</a> artigo;</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordtype">bool</span> achou = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   14</span>    </div>
+<div class="line"><span class="lineno">   15</span>    fseek(ponteiroHash, <a class="code hl_function" href="functions_8h.html#a747a01173ecccb998a3b181b9d15649e">funcaoHash</a>(idPesquisa)*<a class="code hl_define" href="dados_8h.html#abf2a41ef4a17aa387bb4d79a03f41155">TAMANHO_BLOCO</a>, SEEK_SET);</div>
+<div class="line"><span class="lineno">   16</span>    fread(&amp;bloco, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structtipo_bloco.html">tipoBloco</a>), 1, ponteiroHash);</div>
+<div class="line"><span class="lineno">   17</span> </div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; bloco.<a class="code hl_variable" href="structtipo_bloco.html#a031e617c26d0de48639c9fcf3b82140e">quantidadeArtigos</a>; i++)</div>
+<div class="line"><span class="lineno">   19</span>    {</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span>(bloco.<a class="code hl_variable" href="structtipo_bloco.html#a3564dddfcecb6ac05a2b3e953996b87f">vetorArtigos</a>[i].<a class="code hl_variable" href="structtipo_artigo.html#a2893c9bac873557ac3e37cbf1094932c">ID</a> == idPesquisa)</div>
+<div class="line"><span class="lineno">   21</span>        {</div>
+<div class="line"><span class="lineno">   22</span>            achou = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   23</span>            artigo = bloco.<a class="code hl_variable" href="structtipo_bloco.html#a3564dddfcecb6ac05a2b3e953996b87f">vetorArtigos</a>[i];</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   25</span>        }</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span>(achou)</div>
+<div class="line"><span class="lineno">   29</span>    {</div>
+<div class="line"><span class="lineno">   30</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Id: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#a2893c9bac873557ac3e37cbf1094932c">ID</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   31</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Título: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#ad86aae3e64103dc436f6fd651e3207cb">Titulo</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   32</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Ano: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#a05d8b421365efdd24470dcadf568e7d3">Ano</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   33</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Autores: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#a202cebcaaf8ee7c97760271a342914eb">Autores</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   34</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Citações: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#a4581dda7087b6514b7f56bfe2afaafba">Citacoes</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   35</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Atualização: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#a2bb93b13ea43962ca39def8d27a672b9">Atualizacao</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   36</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Snippet: &quot;</span> &lt;&lt; artigo.<a class="code hl_variable" href="structtipo_artigo.html#a54a14c518ec669a9ea7b94e08e3c86ce">Snippet</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   37</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Total de blocos lidos: &quot;</span> &lt;&lt; 1 &lt;&lt; std::endl; <span class="comment">// sempre será 1 aqui por ser um hash</span></div>
+<div class="line"><span class="lineno">   38</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Total de blocos do arquivo: &quot;</span> &lt;&lt; <a class="code hl_define" href="dados_8h.html#a532ff24a73a97397a304d8c3b85627e5">QUANTIDADE_BUCKETS</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   41</span>    {</div>
+<div class="line"><span class="lineno">   42</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Registro não encontrado!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="line"><span class="lineno">   44</span>    </div>
+<div class="line"><span class="lineno">   45</span>    fclose(ponteiroHash);</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+<div class="ttc" id="adados_8h_html_a532ff24a73a97397a304d8c3b85627e5"><div class="ttname"><a href="dados_8h.html#a532ff24a73a97397a304d8c3b85627e5">QUANTIDADE_BUCKETS</a></div><div class="ttdeci">#define QUANTIDADE_BUCKETS</div><div class="ttdef"><b>Definition:</b> dados.h:2</div></div>
+<div class="ttc" id="adados_8h_html_abf2a41ef4a17aa387bb4d79a03f41155"><div class="ttname"><a href="dados_8h.html#abf2a41ef4a17aa387bb4d79a03f41155">TAMANHO_BLOCO</a></div><div class="ttdeci">#define TAMANHO_BLOCO</div><div class="ttdef"><b>Definition:</b> dados.h:3</div></div>
+<div class="ttc" id="afunctions_8h_html_a747a01173ecccb998a3b181b9d15649e"><div class="ttname"><a href="functions_8h.html#a747a01173ecccb998a3b181b9d15649e">funcaoHash</a></div><div class="ttdeci">int funcaoHash(int chave)</div><div class="ttdef"><b>Definition:</b> functions.h:15</div></div>
+<div class="ttc" id="astructtipo_artigo_html"><div class="ttname"><a href="structtipo_artigo.html">tipoArtigo</a></div><div class="ttdef"><b>Definition:</b> dados.h:30</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a05d8b421365efdd24470dcadf568e7d3"><div class="ttname"><a href="structtipo_artigo.html#a05d8b421365efdd24470dcadf568e7d3">tipoArtigo::Ano</a></div><div class="ttdeci">int Ano</div><div class="ttdef"><b>Definition:</b> dados.h:33</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a202cebcaaf8ee7c97760271a342914eb"><div class="ttname"><a href="structtipo_artigo.html#a202cebcaaf8ee7c97760271a342914eb">tipoArtigo::Autores</a></div><div class="ttdeci">char Autores[150]</div><div class="ttdef"><b>Definition:</b> dados.h:34</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a2893c9bac873557ac3e37cbf1094932c"><div class="ttname"><a href="structtipo_artigo.html#a2893c9bac873557ac3e37cbf1094932c">tipoArtigo::ID</a></div><div class="ttdeci">int ID</div><div class="ttdef"><b>Definition:</b> dados.h:31</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a2bb93b13ea43962ca39def8d27a672b9"><div class="ttname"><a href="structtipo_artigo.html#a2bb93b13ea43962ca39def8d27a672b9">tipoArtigo::Atualizacao</a></div><div class="ttdeci">char Atualizacao[20]</div><div class="ttdef"><b>Definition:</b> dados.h:36</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a4581dda7087b6514b7f56bfe2afaafba"><div class="ttname"><a href="structtipo_artigo.html#a4581dda7087b6514b7f56bfe2afaafba">tipoArtigo::Citacoes</a></div><div class="ttdeci">int Citacoes</div><div class="ttdef"><b>Definition:</b> dados.h:35</div></div>
+<div class="ttc" id="astructtipo_artigo_html_a54a14c518ec669a9ea7b94e08e3c86ce"><div class="ttname"><a href="structtipo_artigo.html#a54a14c518ec669a9ea7b94e08e3c86ce">tipoArtigo::Snippet</a></div><div class="ttdeci">char Snippet[1024]</div><div class="ttdef"><b>Definition:</b> dados.h:37</div></div>
+<div class="ttc" id="astructtipo_artigo_html_ad86aae3e64103dc436f6fd651e3207cb"><div class="ttname"><a href="structtipo_artigo.html#ad86aae3e64103dc436f6fd651e3207cb">tipoArtigo::Titulo</a></div><div class="ttdeci">char Titulo[300]</div><div class="ttdef"><b>Definition:</b> dados.h:32</div></div>
+<div class="ttc" id="astructtipo_bloco_html"><div class="ttname"><a href="structtipo_bloco.html">tipoBloco</a></div><div class="ttdef"><b>Definition:</b> dados.h:41</div></div>
+<div class="ttc" id="astructtipo_bloco_html_a031e617c26d0de48639c9fcf3b82140e"><div class="ttname"><a href="structtipo_bloco.html#a031e617c26d0de48639c9fcf3b82140e">tipoBloco::quantidadeArtigos</a></div><div class="ttdeci">int quantidadeArtigos</div><div class="ttdef"><b>Definition:</b> dados.h:42</div></div>
+<div class="ttc" id="astructtipo_bloco_html_a3564dddfcecb6ac05a2b3e953996b87f"><div class="ttname"><a href="structtipo_bloco.html#a3564dddfcecb6ac05a2b3e953996b87f">tipoBloco::vetorArtigos</a></div><div class="ttdeci">tipoArtigo vetorArtigos[2]</div><div class="ttdef"><b>Definition:</b> dados.h:43</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>
